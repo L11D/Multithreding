@@ -17,7 +17,6 @@ void deviceLogic(volatile sig_atomic_t& endSignal, priority_queue<int>& queue, m
 		{
 			queue.pop();
 			queueMutex.unlock();
-			//working = true;
 			Sleep(getRandom(10, 1000));
 			counterM.lock();
 			if (counter > 0)
@@ -29,7 +28,6 @@ void deviceLogic(volatile sig_atomic_t& endSignal, priority_queue<int>& queue, m
 			{
 				counterM.unlock();
 			}
-			//working = false;
 		}
 		else
 		{
@@ -53,16 +51,9 @@ public:
 		deviceTread.join();
 	}
 
-	bool isWorking()
-	{
-		return working;
-	}
 
 private:
 	volatile sig_atomic_t& endSignal;
 	thread deviceTread;
-	bool working = false;
-
-	
 };
 

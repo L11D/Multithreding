@@ -48,7 +48,7 @@ void generatorLogic(vector<priority_queue<int>>& queueGroups, vector<mutex>& que
 			currentQueueSize++;
 			currentQueueSizeM.unlock();
 			int groupIndex = getRandom(0, queueGroups.size() - 1);
-			int priority = getRandom(0, 9);
+			int priority = getRandom(0, 2);
 			queueMutexes[groupIndex].lock();
 			queueGroups[groupIndex].push(priority);
 			queueMutexes[groupIndex].unlock();
